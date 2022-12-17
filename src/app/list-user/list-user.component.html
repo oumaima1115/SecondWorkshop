@@ -1,0 +1,78 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box clearfix">
+                <div class="table-responsive">
+                                
+                    <!-- <div [hidden]="isHidden" class="input-group">
+                        <div class="form-outline">
+                          <input [(ngModel)]="searchText" placeholder="Search" autocomplete="on" name="search"
+                           type="search" id="form1" class="form-control" />
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div> -->
+                      <input 
+                      [(ngModel)]="searchText" 
+                      placeholder="Search" 
+                      autocomplete="on" 
+                      name="search"
+                      type="search" 
+                      id="form1"
+                      class="form-control">
+                    <table class="table user-list" *ngFor="let l of list | filter:searchText">
+                        <thead>
+                            <tr>
+                                <th><span>User</span></th>
+                                <th><span>Created</span></th>
+                                <th class="text-center"><span>Status</span></th>
+                                <th><span>Email</span></th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img [src]="l.picture" alt="">
+                                    <a class="user-link">{{ l.firstName}}</a>
+                                    <span class="user-subhead">{{ l.lastName}}</span>
+                                </td>
+                                <td>
+                                    {{ l.birthDate}}
+                                </td>
+                                <td class="text-center">
+                                    <span class="label label-default">{{ l.accountCategory}}</span>
+                                </td>
+                                <td>
+                                    <a > {{ l.email}}</a>
+                                </td>
+                                <td style="width: 20%;">
+                                    <a  class="table-link danger">
+                                        <button type="button" class="btn btn-danger" 
+                                        
+                                        (click)="removeUser(l.id)">
+                                            Delete
+                                        </button>
+                                    </a>
+                                    <a class="table-link secondary" [routerLink]="['/updateUser/']" [queryParams]="{category:l.id}">
+                                        <!-- <button type="button" class="btn btn-secondary" [routerLink]="['/updateUser/', l.id]"> -->
+                                            Update
+                                        <!-- </button> -->
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<!-- 
+    <app-form-user [users]="list" style="width:200px"></app-form-user> -->
+
+
+    <!-- [disabled]='isDisabled(l.accountCategory)' -->

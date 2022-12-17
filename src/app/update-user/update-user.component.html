@@ -1,0 +1,66 @@
+
+<h1>Ajouter un Utilisateur</h1>
+<form #form="ngForm" novalidate>
+    <div class="form-group"> 
+        <table>
+            <tbody>
+                <tr>
+                    <label>First Name</label>
+                </tr>
+                <tr>
+                    <input required minlength="3" pattern="[a-zA-Z]*" ngModel name="firstname" #firstname="ngModel">
+                    <div class="alert alert-danger" *ngIf="firstname.invalid && !firstname.untouched">first name is required</div>
+                    <div class="alert alert-danger" *ngIf="firstname.errors?.['minlength'] && !firstname.untouched">Min length is three</div>
+                    <div class="alert alert-danger" *ngIf="firstname.errors?.['pattern'] && !firstname.untouched">first name should be conatins a-zA-Z</div> 
+                    
+                </tr>
+                <tr>
+                    <label>Last Name</label>
+                </tr>
+                <tr>
+                    <input required minlength="3" pattern="[a-zA-Z]*" ngModel name="lastname" #lastname="ngModel">
+                    <div class="alert alert-danger" *ngIf="lastname.invalid && !lastname.untouched">last name is required</div>
+                    <div class="alert alert-danger" *ngIf="lastname.errors?.['minlength'] && !lastname.untouched">Min length is three</div> 
+                    <div class="alert alert-danger" *ngIf="lastname.errors?.['pattern'] && !lastname.untouched">last name should be conatins a-zA-Z</div> 
+                </tr>
+                <tr>
+                    <label>Birthdate</label>
+                </tr>
+                <tr>
+                    <input ngModel type="date" name="birthdate" #birthdate="ngModel">
+                </tr>
+                <tr>
+                    <label>Email</label>
+                </tr>
+                <tr>
+                    <input pattern="^[a-zA-Z0-9._-]+@gmail.com" ngModel name="email" #email="ngModel">
+                    <div class="alert alert-danger" *ngIf="email.errors?.['pattern'] && !email.untouched">email should be looks like this a-zA-Z0-9._-@gmail.com</div> 
+                </tr>
+                <tr>
+                    <label>Profession</label>
+                </tr>
+                <tr>
+                    <input ngModel name="profession" #profession="ngModel">
+                </tr>
+                <tr>
+                    <label>Password</label>
+                </tr>
+                <tr>
+                    <input required pattern="^[a-zA-Z0-9]{8,}?" ngModel name="password" #password="ngModel">
+                    <div class="alert alert-danger" *ngIf="password.errors?.['required'] && !password.untouched">Password required</div> 
+                    <div class="alert alert-danger" *ngIf="password.errors?.['pattern'] && !password.untouched">Password should conatins a-zA-Z0-9 and minlength 8 </div> 
+                </tr>
+                <tr>
+                    <label>Customer Category</label>
+                </tr>
+                <tr>
+                <input disabled="true" placeholder="Customer" ngModel name="category" #category="ngModel">
+                </tr>
+                <tr>
+                    <!-- <a class="btn btn-primary" type="submit">Save</a> -->
+                    <button type="submit" [disabled]="form.invalid">Ajouter</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

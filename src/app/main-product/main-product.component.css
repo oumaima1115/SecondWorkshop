@@ -1,0 +1,16 @@
+.div{
+    border: 1px solid black;
+    margin-left: 14px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    padding-top: 4px;
+}
+.less{
+    color: blue;
+    font-style: italic;
+    font-size: "20px";
+}
+.more{
+    color: black;
+    font-size: "40px";
+}

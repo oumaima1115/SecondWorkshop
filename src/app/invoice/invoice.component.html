@@ -1,0 +1,10 @@
+
+    <ul *ngIf="fact.active">
+        <li>ID Facture: {{fact.idFacture}}</li>
+        <li>Montant Facture: {{fact.montantFacture}}</li>
+        <li>Montant Remise: {{fact.montantRemise}}</li>
+        <li>Date Facture: {{fact.dateFacture}}</li>
+    </ul>
+    <div *ngIf="!fact.active">Impossible de visualiser les détails de la facture</div>
+
+    <button class="primary" (click)="redirectToBack()">Back To MainInvoice</button>

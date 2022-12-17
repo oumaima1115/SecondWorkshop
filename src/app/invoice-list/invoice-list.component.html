@@ -1,0 +1,12 @@
+
+<ul  [hidden]="!isHidden">
+    <div *ngFor="let l of list">
+        <!-- SOLUTION WITH PathParams -->
+        <li>Facture : {{l.idFacture}} <a [routerLink]="['invoice',l.idFacture,l.active]">Details</a></li>
+
+        <!-- SOLUTION WITH QueryParms -->
+        <!-- <li>Facture : {{l.idFacture}} <a [routerLink]="['invoice']" [queryParams]="{ id:l.idFacture,active:l.active }" >Details</a></li> -->
+    </div>
+</ul>
+
+<app-invoice [hidden]="isHidden" [list]="list"></app-invoice>

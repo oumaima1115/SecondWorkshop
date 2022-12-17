@@ -1,0 +1,87 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="form-group"> 
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        id Produit<br>
+                        <input [class]="variable" [disabled]="formValid" required ngModel name="id" #id="ngModel">
+                        <div class="alert alert-danger" *ngIf="id.invalid && !id.untouched">Id product is required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Code<br>
+                        <input [class]="variable" [disabled]="formValid" required pattern ="[a-zA-Z-0-9]{8}" ngModel name="code" #code="ngModel">
+                        <div class="alert alert-danger" *ngIf="code.invalid && !code.untouched">Code is required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Libelle<br>
+                        <input [class]="variable" [disabled]="formValid" required minlength="3" ngModel name="libelle" #libelle="ngModel">
+                        <div class="alert alert-danger" *ngIf="libelle.invalid && !libelle.untouched">Libelle is required</div>
+                        <div class="alert alert-danger" *ngIf="libelle.errors?.['minlength'] && !libelle.untouched">Min length is three</div>
+                    </th>
+                </tr>         
+                <tr>
+                    <th>
+                        Prix unitaire<br>
+                        <input [class]="variable" [disabled]="formValid" required pattern="[1-9][0-9]*" ngModel name="prix" #prix="ngModel">
+                        <div class="alert alert-danger" *ngIf="prix.invalid && !prix.untouched">Price is required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><button [disabled]="form.invalid" [hidden]="formValid" type="submit">Suivant</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<form #formTwo="ngForm" (ngSubmit)="onSubmitTwo(formTwo, form)" novalidate [hidden]="!formValid">
+    <div class="form-group"> 
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        Id détails produit<br>
+                        <input [class]="formTwo.valid?'form-control is-valid':''" required ngModel name="idDetailsP" #idDetailsP="ngModel">
+                        <div class="alert alert-danger" *ngIf="idDetailsP.invalid && !idDetailsP.untouched">Id details product required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Date création<br>
+                        <input [class]="formTwo.valid?'form-control is-valid':''" required ngModel name="dateCr" #dateCr="ngModel">
+                        <div class="alert alert-danger" *ngIf="dateCr.invalid && !dateCr.untouched">Date creation is required</div>
+                    </th>
+                </tr>
+                <tr [hidden]="dateCr.invalid">
+                    <th>
+                        Date dernière modification<br>
+                        <input [class]="formTwo.valid?'form-control is-valid':''" required ngModel name="dateMd" #dateMd="ngModel">
+                        <div class="alert alert-danger" *ngIf="dateMd.invalid && !dateMd.untouched">Date last modification is required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Catégorie produit<br>
+                        <select [class]="formTwo.valid?'form-control is-valid':''" required ngModel name="category" #category="ngModel">
+                            <option>Electromenager</option>
+                            <option>Alimentaire</option>
+                            <option>Quincaillerie</option>
+                        </select>
+                        <div class="alert alert-danger" *ngIf="category.invalid && !category.untouched">category is required</div>
+                    </th>
+                </tr>
+                <tr>
+                    <th><button [hidden]="formTwo.invalid" type="submit">Ajouter</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<br>
+<br>

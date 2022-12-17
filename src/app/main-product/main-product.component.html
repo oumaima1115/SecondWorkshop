@@ -1,0 +1,148 @@
+
+<app-add-product-td [products]="listProduits"></app-add-product-td>
+
+<!--
+<h1>Solution with property Binding</h1>
+<h1>Recherche produit</h1>
+
+Code : <input 
+            [(ngModel)]="searchText" 
+            placeholder="Search" 
+            autocomplete="on" 
+            name="search"
+            type="search" 
+            id="form1" 
+            class="form-control">
+
+<div *ngFor="let list of listProduits | filter:searchText; let i=index;">
+    <div 
+        [style]="{'color':getColor(list.prixUnitaire), 'font-style': getStyle(list.prixUnitaire), 'font-size': getSize(list.prixUnitaire)}">
+        <span>{{i+1}}.</span>
+        <div 
+            class="div" 
+            [ngStyle]="{'margin-left': getMargin(list.prixUnitaire)}">
+            <span hidden>{{i+1}}.</span>Produit: {{list.libelle}}
+            <button
+                (click)="changeTVA(list.idProduit)"
+                [disabled]="list.tauxTVA == 0.02">
+                Ajuster TVA
+            </button>
+            <span *ngIf="list.idProduit == identifiant">TVA modifiée</span>
+            <ul>
+                <li>Identifiant: {{list.idProduit}}</li>
+                <li>Code: {{list.code}}</li>
+                <li>Prix Unitaire: <span>{{list.prixUnitaire}}</span></li>
+                <li>Taux TVA: {{list.tauxTVA}}</li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+
+<!-- <h1>Solution with ngStyle</h1> 
+<h1>Recherche produit</h1> -->
+Code : <input 
+            [(ngModel)]="searchText" 
+            placeholder="Search" 
+            autocomplete="on" 
+            name="search"
+            type="search" 
+            id="form1"
+            class="form-control">
+
+<div *ngFor="let list of listProduits | filter:searchText; let i=index;">
+    <div 
+        [ngStyle]="{'color':getColor(list.prixUnitaire), 'font-style': getStyle(list.prixUnitaire), 'font-size': getSize(list.prixUnitaire)}">
+        <span>{{i+1}}.</span>
+        <div 
+            class="div" 
+            [ngStyle]="{'margin-left': getMargin(list.prixUnitaire)}">
+            <span hidden>{{i+1}}.</span>Produit: {{list.libelle}}
+            <button
+                (click)="changeTVA(list.idProduit)"
+                [disabled]="list.tauxTVA == 0.02">
+                Ajuster TVA
+            </button>
+            <span *ngIf="list.idProduit == identifiant">TVA modifiée</span>
+            <ul>
+                <li>Identifiant: {{list.idProduit}}</li>
+                <li>Code: {{list.code}}</li>
+                <li>Prix Unitaire: <span>{{list.prixUnitaire}}</span></li>
+                <li>Taux TVA: {{list.tauxTVA}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 
+<button (click)="class()">gt</button>
+<h1>Solution with ngClass</h1>
+<h1>Recherche produit</h1>
+Code : <input 
+            [(ngModel)]="searchText" 
+            placeholder="Search" 
+            autocomplete="on" 
+            name="search"
+            type="search" 
+            id="form1" 
+            class="form-control">
+
+<div *ngFor="let list of listProduits | filter:searchText; let i=index;">
+    <div [ngClass]="{'less': less, 'more': more}">
+        <span>{{i+1}}.</span>
+        <div 
+            class="div" 
+            [ngStyle]="{'margin-left': getMargin(list.prixUnitaire)}">
+            <span hidden>{{i+1}}.</span>Produit: {{list.libelle}}
+            <button
+                (click)="changeTVA(list.idProduit)"
+                [disabled]="list.tauxTVA == 0.02">
+                Ajuster TVA
+            </button>
+            <span *ngIf="list.idProduit == identifiant">TVA modifiée</span>
+            <ul>
+                <li>Identifiant: {{list.idProduit}}</li>
+                <li>Code: {{list.code}}</li>
+                <li>Prix Unitaire: <span>{{list.prixUnitaire}}</span></li>
+                <li>Taux TVA: {{list.tauxTVA}}</li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+
+<h1>Ajouter d'un produit</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <div class="form-group"> 
+        <table>
+            <tbody>
+                <tr>
+                    <th>idproduit</th>
+                    <th>
+                        <input required ngModel name="id" #id="ngModel">
+                    </th>
+                </tr>
+                <tr>
+                    <th>Code</th>
+                    <th>
+                        <input required ngModel name="code" #code="ngModel">
+                        <!-- <div class="alert alert-danger" *ngIf="code.touched && code.valid">code required</div> -->
+                    </th>
+                </tr>
+                <tr>
+                    <th>Libelle</th>
+                    <th><input required ngModel name="libelle" #libelle="ngModel"></th>
+                </tr>         
+                <tr>
+                    <th>Prix unitaire</th>
+                    <th><input required ngModel name="prix" #prix="ngModel"></th>
+                </tr>
+                <tr>
+                    <th>Taux TVA</th>
+                    <th><input required ngModel name="taux" #taux="ngModel"></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th><button type="submit">Ajouter</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
